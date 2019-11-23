@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <GMapAutocomplete />
     <WeatherMain 
       v-bind:weatherData="currentWeatherData" 
       v-bind:locationData="locationData"
@@ -10,38 +9,24 @@
 
 <script>
 import WeatherMain from './components/WeatherMain.vue'
-import GMapAutocomplete from './components/GMapAutocomplete.vue'
 
 export default {
   name: 'app',
   components: {
-    WeatherMain,
-    GMapAutocomplete
+    WeatherMain
   },
   data() {
     return {  
       err: undefined,
       currentWeatherData: {
-          description: '--',
-          wind: '--',
-          humidity: '--',
-          percip: '--',
-          clouds: '--',
-          temp: '--'
+      
       },
       locationData: {
-        searchedLocations: [],
+        // Currently searched location
         searchLocation: '--',
-        // Used to map 'getUTCDate' to text representation
-        dayMap: [
-          'Sunday',
-          'Monday',
-          'Tuesday',
-          'Wednesday',
-          'Thursday',
-          'Friday',
-          'Saturday',
-        ]
+        
+        // Recent locations searched by the user
+        searchedLocations: []
       }
       
     }
